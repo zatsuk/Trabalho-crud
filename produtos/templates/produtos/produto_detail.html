@@ -1,0 +1,35 @@
+{% extends 'produtos/base.html' %}
+
+{% block titulo %}{{ produto.nome }}{% endblock %}
+
+{% block conteudo %}
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h1 class="card-title">{{ produto.nome }}</h1>
+            <h6 class="card-subtitle mb-3 text-muted">{{ produto.get_categoria_display }}</h6>
+
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item"><strong>Código de barras:</strong> {{ produto.codigo_barras }}</li>
+                <li class="list-group-item"><strong>Fornecedor:</strong> {{ produto.fornecedor|default:"—" }}</li>
+                <li class="list-group-item"><strong>Preço:</strong> R$ {{ produto.preco }}</li>
+                <li class="list-group-item"><strong>Quantidade em estoque:</strong> {{ produto.quantidade_estoque }}</li>
+                <li class="list-group-item"><strong>Validade:</strong> {{ produto.validade|default:"—" }}</li>
+                <li class="list-group-item">
+                    <strong>Ativo para venda:</strong>
+                    {% if produto.ativo %}Sim{% else %}Não{% endif %}
+                </li>
+            </ul>
+
+            {% if produto.descricao %}
+                <p><strong>Descrição:</strong></p>
+                <p>{{ produto.descricao }}</p>
+            {% endif %}
+
+            <a class="btn btn-warning" href="{% url 'produto_update' produto.pk %}">Editar</a>
+            <a class="btn btn-danger" href="{% url 'produto_delete' produto.pk %}">Excluir</a>
+            <a class="btn btn-secondary" href="{% url 'produto_list' %}">Voltar</a>
+        </div>
+    </div>
+
+{% endblock %}

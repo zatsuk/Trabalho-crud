@@ -1,0 +1,24 @@
+{% extends 'produtos/base.html' %}
+
+{% block titulo %}Excluir produto{% endblock %}
+
+{% block conteudo %}
+
+    <div class="card shadow-sm border-danger">
+        <div class="card-body">
+            <h1 class="mb-3">Confirmar exclusão</h1>
+            <p>
+                Tem certeza de que deseja excluir o produto
+                <strong>"{{ produto.nome }}"</strong>? Essa ação não pode ser desfeita.
+            </p>
+
+            {# Um GET só mostra esta tela; a exclusão de fato só acontece no POST #}
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Sim, excluir</button>
+                <a class="btn btn-secondary" href="{% url 'produto_detail' produto.pk %}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
