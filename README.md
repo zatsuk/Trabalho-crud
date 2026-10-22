@@ -3,10 +3,9 @@
 Trabalho prático da disciplina de Programação Back-End — CRUD completo
 desenvolvido com Django sobre o tema **estoque de produtos de um mercado**.
 
-## Integrantes
+## Integrante
 
-- Nome do integrante 1
-- Nome do integrante 2 *(se houver dupla)*
+Gabriel Di Lorenzo Correa
 
 ## Tema
 
